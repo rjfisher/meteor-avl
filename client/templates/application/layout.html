@@ -1,0 +1,49 @@
+<template name="layout">
+  <div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">AVL with Meteor</a>
+
+        <button class="navbar-toggle" data-toggle="collapse" data-target="#navigationMenu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navigationMenu">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{pathFor 'home'}}">Home</a></li>
+          {{#if currentUser}}
+            <li><a href="{{pathFor 'logOut'}}">Log-Out</a></li>
+          {{else}}
+            <li><a href="{{pathFor 'signIn'}}">Sign-In</a></li>
+            <li><a href="{{pathFor 'signUp'}}">Sign-Up</a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div id="fullBg"> </div>
+    <div class="container">
+      <div id="main" class="row-fluid">
+        {{> yield}}
+      </div>
+    </div>
+  </div>
+
+  <footer class="nav navbar-default">
+    <div class="container">
+      <a href="/" class="navbar-brand">AVL with Meteor &copy; 2015</a>
+      <div class="collapse navbar-collapse cdr" id="navigationMenu">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Feedback</a></li>
+          <li><a href="#">Advertisement</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</template>
