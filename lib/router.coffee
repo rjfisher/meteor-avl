@@ -20,9 +20,11 @@ Router.route '/log-out',
       Router.go 'home'
 
 Router.route '/',
-  name: 'home'
+  name: 'home',
+  waitOn: ->
+    Meteor.subscribe 'vehicles'
   action: ->
     if Meteor.user()
-      @render 'avl'
+      @render 'home'
     else
       @render 'about'

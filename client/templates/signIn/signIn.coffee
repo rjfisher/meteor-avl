@@ -7,6 +7,6 @@ Template.signIn.events
 
     Meteor.loginWithPassword email, password, (error) ->
       if (error)
-        toastr.error('Could not log in: ', + error.reason, 'Error!')
+        toastr.error('Invalid credentials.  Could not log in!', 'Error!')
       else
         Router.go 'home'
