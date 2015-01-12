@@ -10,12 +10,16 @@ Template.home.rendered = ->
   Deps.autorun ->
     loc = Geolocation.latLng()
     vehicle = Vehicles.findOne(user: Meteor.user()._id)
-
+    
     return if (loc is null) or (vehicle is null)
+    
+    location =
+      lat: loc.lat
+      lon: loc.lng
 
-    Meteor.call 'updateVehicleLocation', loc, (error, result) ->
+    Meteor.call 'updateVehicleLocation', location, (error, result) ->
       return toastr.error error.reason if error
-      return toastr.success 'Vehicle ' + result.name + ' updated'
+      return toastr.success 'Vehicle ' + result.name + ' updated' if result?
 
     #Metor.call 'addVehicleHistory', vehicle, (error, result) ->
     #  return toastr.error error.reason if error

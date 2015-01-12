@@ -1,0 +1,14 @@
+<template name="vehicleList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Vehicles</h3>
+    </div>
+    <div class="panel-body">
+      <div class="list-group">
+        {{#each vehicles}}
+          {{> vehicle}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>

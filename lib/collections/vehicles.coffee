@@ -29,12 +29,11 @@ Meteor.methods
     check Meteor.userId(), String
     check location,
       lat: Number,
-      lng: Number
+      lon: Number
 
-    vehicle = Vehicles.findOne(user: Meteor.userId()._id)
+    vehicle = Vehicles.findOne(user: Meteor.userId())
 
-    if vehicle is null
-      return
+    return if not vehicle?
 
     seconds = (new Date().getTime() - vehicle.updated) / 1000
 

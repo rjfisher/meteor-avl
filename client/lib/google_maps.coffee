@@ -30,11 +30,13 @@
       return
 
     Deps.autorun ->
+      return if Session.get('located')
       p = Geolocation.currentLocation()
       if p is null
         return
 
       loc = new google.maps.LatLng(p.coords.latitude, p.coords.longitude)
+      Session.get('located', true)
       map.setCenter loc
 
       return
