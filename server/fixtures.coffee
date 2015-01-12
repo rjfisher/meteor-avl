@@ -21,7 +21,7 @@ lngMax = -75.0334645
 #        lat: lat
 #    )
 #    i++
-
+#
 #  Vehicles._ensureIndex loc: '2d'
 #  Histories._ensureIndex loc: '2d'
 
