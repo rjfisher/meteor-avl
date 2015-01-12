@@ -5,16 +5,17 @@ lngMax = -75.0334645
 
 if Vehicles.find({}).count() is 0
   console.log 'Adding fake vehicle information'
-  
+
   i = 0
   while i < 10
     lat = Math.random() * (latMax - latMin) + latMin
     lng = Math.random() * (lngMax - lngMin) + lngMin
-    
+
     id = Vehicles.insert(
       name: 'Test Vehicle #' + i
       organization: 'Test Company'
       added: new Date()
+      updated: null
       user: null
       loc:
         lon: lng

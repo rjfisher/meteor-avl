@@ -35,18 +35,6 @@
         return
 
       loc = new google.maps.LatLng(p.coords.latitude, p.coords.longitude)
-
-      if typeof @currLocation isnt 'undefined'
-        @currLocation.map = null
-        @currLocation = null
-
-      @currLocation = new google.maps.Marker(
-        position: loc
-        map: map
-        draggable: false
-        animation: google.maps.Animation.DROP
-        title: 'Your Location'
-      )
       map.setCenter loc
 
       return

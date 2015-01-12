@@ -2,13 +2,31 @@ liveMarkers = null
 
 Template.home.helpers
   vehicleNotAssigned: ->
-    Vehicles.find({user: Meteor.user()._id}).count() is 0
+    Vehicles.find(user: Meteor.user()._id).count() is 0
 
 Template.home.rendered = ->
   gmaps.initialize() unless Session.get('map')
-    
+
+  Deps.autorun ->
+    loc = Geolocation.latLng()
+    vehicle = Vehicles.findOne(user: Meteor.user()._id)
+
+    return if (loc is null) or (vehicle is null)
+
+    Meteor.call 'updateVehicleLocation', loc, (error, result) ->
+      return toastr.error error.reason if error
+      return toastr.success 'Vehicle ' + result.name + ' updated'
+
+    #Metor.call 'addVehicleHistory', vehicle, (error, result) ->
+    #  return toastr.error error.reason if error
+    #  return toastr.success 'Vehicle ' + result._id + ' history added'
+
+    return
+
   @liveMarkers = LiveMaps.addMarkersToMap(gmaps.map, [
       cursor: Vehicles.find()
+      onClick: ->
+        console.log 'Click vehicle ' + @id
       transform: (vehicle) ->
         title: vehicle.name
         position: new google.maps.LatLng(vehicle.loc.lat, vehicle.loc.lon)
