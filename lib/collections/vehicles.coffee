@@ -1,4 +1,11 @@
-@Vehicles = new Mongo.Collection('vehicles')
+@Vehicles = new Mongo.Collection('vehicles',
+  transform: (doc) ->
+    doc.lastSeen = ->
+      seen = moment(@updated)
+      seen.fromNow()
+
+    doc
+)
 
 Meteor.methods
   addVehicle: (vehicleAttrs) ->
@@ -18,7 +25,7 @@ Meteor.methods
     user = Meteor.user()
     vehicle = _.extend(vehicleAttrs,
       added: new Date()
-      updated: null
+      updated: new Date()
       user: user._id
     )
 

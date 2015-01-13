@@ -3,6 +3,11 @@
   currLocation: null
   locationsHandler: false
 
+  centerOnLocation: (location) ->
+    loc = new google.maps.LatLng(location.lat, location.lon)
+    @map.setCenter loc
+    return
+
   initialize: ->
     mapOptions =
       zoom: 18

@@ -10,9 +10,9 @@ Template.home.rendered = ->
   Deps.autorun ->
     loc = Geolocation.latLng()
     vehicle = Vehicles.findOne(user: Meteor.user()._id)
-    
+
     return if (loc is null) or (vehicle is null)
-    
+
     location =
       lat: loc.lat
       lon: loc.lng
@@ -30,7 +30,7 @@ Template.home.rendered = ->
   @liveMarkers = LiveMaps.addMarkersToMap(gmaps.map, [
       cursor: Vehicles.find()
       onClick: ->
-        console.log 'Click vehicle ' + @id
+        Session.set 'selected', @id
       transform: (vehicle) ->
         title: vehicle.name
         position: new google.maps.LatLng(vehicle.loc.lat, vehicle.loc.lon)

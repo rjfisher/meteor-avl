@@ -4,6 +4,11 @@
       <h3 class="panel-title">Vehicles</h3>
     </div>
     <div class="panel-body">
+      <div class="row search-div">
+        <div class="input-group search-group">
+          <input type="search" class="form-control filter" placeholder="Search for...">
+        </div>
+      </div>
       <div class="list-group">
         {{#each vehicles}}
           {{> vehicle}}
