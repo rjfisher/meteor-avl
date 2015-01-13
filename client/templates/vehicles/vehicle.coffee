@@ -5,6 +5,11 @@ Template.vehicle.events
     Session.set 'selected', @_id
     gmaps.centerOnLocation @loc
 
+  'click .btn-default': (e) ->
+    e.preventDefault()
+
+    Router.go '/history/' + @name
+
 Template.vehicle.helpers
   active: ->
     id = Session.get 'selected'

@@ -1,0 +1,23 @@
+<template name="history">
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="map-canvas" style="position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"></div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Vehicle History</h3>
+    </div>
+    <div class="panel-body">
+      <p>Historical Points: {{pointCount}}</p>
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default">Left</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default">Middle</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default">Right</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

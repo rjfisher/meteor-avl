@@ -19,11 +19,13 @@ Template.home.rendered = ->
 
     Meteor.call 'updateVehicleLocation', location, (error, result) ->
       return toastr.error error.reason if error
-      return toastr.success 'Vehicle ' + result.name + ' updated' if result?
+      if result?
+        toastr.success 'Vehicle ' + result.name + ' updated' if result?
 
-    #Metor.call 'addVehicleHistory', vehicle, (error, result) ->
-    #  return toastr.error error.reason if error
-    #  return toastr.success 'Vehicle ' + result._id + ' history added'
+    Meteor.call 'addVehicleHistory', vehicle, (error, result) ->
+      return toastr.error error.reason if error
+      if result?
+        toastr.success 'Vehicle ' + result.name + ' history added'
 
     return
 

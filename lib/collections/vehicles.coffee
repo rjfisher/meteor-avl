@@ -43,7 +43,6 @@ Meteor.methods
     return if not vehicle?
 
     seconds = (new Date().getTime() - vehicle.updated) / 1000
-
     if seconds <= 5
       return
 

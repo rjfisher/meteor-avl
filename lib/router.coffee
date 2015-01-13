@@ -19,6 +19,16 @@ Router.route '/log-out',
     else
       Router.go 'home'
 
+Router.route '/history/:name',
+  name: 'history'
+  waitOn: ->
+    Meteor.subscribe 'history', @params.name
+  action: ->
+    if Meteor.user()
+      @render 'history'
+    else
+      @render 'about'
+
 Router.route '/',
   name: 'home',
   waitOn: ->
