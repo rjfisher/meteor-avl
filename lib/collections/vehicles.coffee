@@ -40,11 +40,10 @@ Meteor.methods
 
     vehicle = Vehicles.findOne(user: Meteor.userId())
 
-    return if not vehicle?
-
     seconds = (new Date().getTime() - vehicle.updated) / 1000
-    if seconds <= 5
-      return
+    return unless seconds > 5
+
+    return if not vehicle?
 
     Vehicles.update vehicle._id,
       $set:

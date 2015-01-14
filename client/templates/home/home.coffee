@@ -13,6 +13,8 @@ Template.home.rendered = ->
 
     return if not loc? or not vehicle?
 
+    return if vehicle.loc.lat is loc.lat and vehicle.loc.lon is loc.lng
+
     location =
       lat: loc.lat
       lon: loc.lng
@@ -21,6 +23,7 @@ Template.home.rendered = ->
       return toastr.error error.reason if error
       if result?
         toastr.success 'Vehicle ' + result.name + ' updated' if result?
+        Session.set 'lastUpdate', moment()
 
     Meteor.call 'addVehicleHistory', vehicle, (error, result) ->
       return toastr.error error.reason if error

@@ -11,9 +11,9 @@ livePolyline = (map, cursor) ->
   flightPath = new google.maps.Polyline(
     path: []
     geodesic: true
-    strokeColor: '#FF0000'
-    strokeOpacity: 1.0,
-    strokeWeight: 2
+    strokeColor: '#77FF77'
+    strokeOpacity: 0.5,
+    strokeWeight: 7
   )
 
   flightPath.setMap(map)

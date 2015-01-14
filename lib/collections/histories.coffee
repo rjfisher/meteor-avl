@@ -16,8 +16,7 @@ Meteor.methods
       throw new Meteor.Error('Invalid User', 'You do not own this vehicle')
 
     seconds = (new Date().getTime() - vehicle.updated) / 1000
-    if seconds <= 5
-      return
+    return unless seconds > 5
 
     history =
       name: vehicle.name

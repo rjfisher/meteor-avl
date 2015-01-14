@@ -10,7 +10,7 @@ Template.history.rendered = ->
     step: 1
     range:
       min: 0
-      max: Histories.find().count() - 1
+      max: 1
   )
 
   # Initialize the map
@@ -23,15 +23,22 @@ Template.history.rendered = ->
       new google.maps.LatLng(doc.loc.lat, doc.loc.lon)
     ])
 
-  changeHistory = Deps.autorun ->
+  # Update the slider range as records change
+  Deps.autorun ->
+    $('.slider').noUiSlider(
+      start: 0
+      range:
+        min: 0
+        max: Histories.find().count() - 1
+    , true)
+
+  Deps.autorun ->
     index = Session.get 'historyIndex'
     return unless index?
 
     histories = Histories.find().fetch()
     history = histories[index]
     return unless history?
-
-    #toastr.warning 'Loc: (' + history.loc.lat + ', ' + history.loc.lon + ')'
 
     gmaps.centerOnLocation history.loc
 
@@ -44,6 +51,9 @@ Template.history.destroyed = ->
   return
 
 Template.history.helpers
+  totalPoints: ->
+    Histories.find().count()
+
   pointDate: ->
     index = Session.get 'historyIndex'
     return unless index?
