@@ -1,5 +1,4 @@
 liveMarkers = null
-historicPoints = []
 
 Template.history.rendered = ->
   gmaps.initialize() unless Session.get('map')
@@ -16,13 +15,16 @@ Template.history.rendered = ->
       icon: '//maps.google.com/mapfiles/ms/icons/green-dot.png'
   ])
 
-  Deps.autorun ->
+  changeHistory = Deps.autorun ->
     index = Session.get 'historyIndex'
-    history = @historicPoints[index]
+    return unless index?
+    
+    histories = Histories.find().fetch()
+    history = histories[index]
+    return unless history?
 
     gmaps.centerOnLocation history.loc
 
-  @historicPoints = Histories.find().fetch()
   Session.set 'historyIndex', 0
   return
 
@@ -38,6 +40,18 @@ Template.history.helpers
 Template.history.events
   'click .btn-start': (e) ->
     Session.set 'historyIndex', 0
+    return
 
   'click .btn-end': (e) ->
-    Session.set 'historyIndex', Histories.find().fetch()
+    Session.set 'historyIndex', Histories.find().count() - 1
+    return
+  
+  'click .btn-back-one': (e) ->
+    index = Session.get 'historyIndex'
+    return unless index? and index >= 1
+    Session.set 'historyIndex', index - 1
+    
+  'click .btn-forward-one': (e) ->
+    index = Session.get 'historyIndex'
+    return unless index? and index < Histories.find().count() - 1
+    Session.set 'historyIndex', index + 1

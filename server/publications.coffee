@@ -4,8 +4,4 @@ Meteor.publish 'vehicles', ->
 Meteor.publish 'history', (name) ->
   check name, String
 
-  Histories.find({},
-    name: name,
-    sort:
-      updated: -1
-  )
+  Histories.find name: name

@@ -31,7 +31,4 @@ Meteor.methods
         lat: vehicle.loc.lat
 
     id = Histories.insert history
-
-    console.log 'history = ' + history.name
-
     name: history.name
