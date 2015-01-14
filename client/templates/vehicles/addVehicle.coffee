@@ -9,6 +9,10 @@ Template.addVehicle.events
     name = $(e.target).find('[name=name]').val()
     org  = $(e.target).find('[name=organization]').val()
 
+    if name is '' or org is ''
+      toastr.error 'Vehicle requires name and organization'
+      return
+
     location = Geolocation.currentLocation()
 
     vehicle =
