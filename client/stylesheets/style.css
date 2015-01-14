@@ -187,3 +187,8 @@ input[type="search"] {
   width: 75%;
   margin: 10px 10px 10px 15px;
 }
+
+.slider {
+  margin-left: 10px;
+  margin-right: 10px;
+}
