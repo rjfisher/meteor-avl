@@ -4,7 +4,6 @@ Meteor.publish 'vehicles', ->
 Meteor.publish 'history', (name) ->
   check name, String
 
-  console.log 'Searching for ' + name
   Histories.find({},
     name: name,
     sort:
