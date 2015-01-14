@@ -11,7 +11,7 @@ Template.home.rendered = ->
     loc = Geolocation.latLng()
     vehicle = Vehicles.findOne(user: Meteor.user()._id)
 
-    return if (loc is null) or (vehicle is null)
+    return if not loc? or not vehicle?
 
     location =
       lat: loc.lat
