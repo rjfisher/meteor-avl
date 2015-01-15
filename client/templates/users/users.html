@@ -1,0 +1,26 @@
+<template name="users">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="heading-wrapper">
+        <div class="heading-left"><span class="glyphicon glyphicon-globe"></span> User Management - {{organization}}</div>
+        <a href="{{pathFor addUser}}"><div class="heading-right"><span class="glyphicon glyphicon-plus"></span> Add User</div></a>
+      </div>
+    </div>
+
+    <table class="table table-hover table-striped">
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th width="32px">Edit</th>
+          <th width="32px">Delete</th>
+        </tr>
+
+        {{#each users}}
+          {{>user}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

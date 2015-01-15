@@ -9,10 +9,10 @@ coffeescript
 iron:router
 accounts-password
 twbs:bootstrap
-ian:bootstrap-3-theme
 sacha:spin
 chrismbeckett:toastr
 mdg:geolocation
 mrt:live-maps
 momentjs:moment
 rcy:nouislider
+multiply:iron-router-progress

@@ -192,3 +192,19 @@ input[type="search"] {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.heading-wrapper {
+  width: 100%;
+  border: none;
+  overflow: hidden; /* will contain if #first is longer than #second */
+}
+.heading-left {
+  width: 50%;
+  float:left; /* add this */
+  border: none;
+}
+.heading-right {
+  border: none;
+  float: right;
+  overflow: hidden; /* if you don't want #second to wrap below #first */
+}
