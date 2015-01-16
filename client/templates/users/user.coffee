@@ -29,3 +29,13 @@ Template.user.events
     # Set who is going to get deleted and show template
     Session.set 'delUser', @_id
     $('#deleteUserModal').modal('show')
+
+Template.user.events
+  'click .editUser': (e) ->
+    # We only want to allow editing by admins
+    if not Meteor.user().profile.isAdmin
+      toastr.error 'Only admins can edit users.', 'Editing Error'
+      return
+
+    Session.set 'editUser', @_id
+    $('#editUserModal').modal('show')

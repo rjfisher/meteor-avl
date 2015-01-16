@@ -16,6 +16,7 @@
           {{#if currentUser}}
             <li><a href="{{pathFor 'profile'}}">{{displayName}}</a></li>
             {{#if isAdmin}}
+              <li><a href="{{pathFor 'vehicles'}}">Vehicles</a></li>
               <li><a href="{{pathFor 'users'}}">Users</a></li>
             {{/if}}
             <li><a href="{{pathFor 'logOut'}}">Log-Out</a></li>

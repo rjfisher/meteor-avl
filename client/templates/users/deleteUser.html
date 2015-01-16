@@ -7,12 +7,16 @@
           <h4 class="modal-title">Delete User?</h4>
         </div>
         <div class="modal-body">
+          <h4>
+            <p><span class="glyphicon glyphicon-trash"></span> Deleting Users:</p>
+          </h4>
           <p>You are about to delete user {{username}} from the system.
           Are you sure that you want to do this?  This action cannot be reversed.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="delUser btn btn-primary">Delete</button>
+          <form class="form">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Delete User</button>
+          </form>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

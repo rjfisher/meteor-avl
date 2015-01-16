@@ -17,7 +17,7 @@ Template.addUser.events
         isAdmin: isAdmin
         organization: organization
 
-    Meteor.call 'addUser', options, (error, result) ->
+    Meteor.call 'addUserToOrganization', options, (error, result) ->
       return toastr.error error.reason if error
       toastr.success name + ' was added to your organization'
       $('#addUserModal').modal('hide')

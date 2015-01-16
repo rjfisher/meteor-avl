@@ -1,5 +1,5 @@
 Template.deleteUser.events
-  'click .delUser': (e) ->
+  'submit form': (e) ->
     e.preventDefault()
 
     user = Session.get 'delUser'
@@ -12,4 +12,5 @@ Template.deleteUser.events
     Meteor.call 'delUser', user, (error, result) ->
       return toastr.error error.reason if error
       toastr.success 'User was sucessfully deleted'
+      Session.set 'delUser', null
       $('#deleteUserModal').modal('hide')

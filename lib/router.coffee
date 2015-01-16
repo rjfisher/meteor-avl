@@ -38,6 +38,17 @@ Router.route '/users',
     else
       @render 'about'
 
+Router.route '/vehicles',
+  name: 'vehicles'
+  waitOn: ->
+    return unless Meteor.user()
+    Meteor.subscribe 'vehicles', Meteor.user().profile.organization
+  action: ->
+    if Meteor.user()
+      @render 'vehicles'
+    else
+      @render 'about'
+
 Router.route '/history/:name',
   name: 'history'
   waitOn: ->

@@ -1,9 +1,5 @@
 liveMarkers = null
 
-Template.home.helpers
-  vehicleNotAssigned: ->
-    Vehicles.find(user: Meteor.user()._id).count() is 0
-
 Template.home.rendered = ->
   gmaps.initialize() unless Session.get('map')
 

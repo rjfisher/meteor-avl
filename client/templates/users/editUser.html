@@ -1,0 +1,26 @@
+<template name="editUser">
+  <div class="modal fade" id="editUserModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit User</h4>
+        </div>
+        <div class="modal-body">
+          <h4>
+            <p><span class="glyphicon glyphicon-edit"></span> Editing Users:</p>
+            <p>Only an administrator can alter user information.</p></h4>
+          <ul>
+            <li><strong>Real Name - </strong> Name to show for the user</li>
+            <li><strong>Administrator - </strong> Does the user have administrator rights</li>
+          </ul>
+          <form class="form">
+            <input type="single" class="form-control" name="displayName" value={{displayName}} placeholder="Real Name" required=""/>
+            <div class="checkbox"><label><input type="checkbox" checked={{isAdmin}} name="admin"> Administrator</label></div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Save Changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
