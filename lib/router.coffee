@@ -19,6 +19,14 @@ Router.route '/log-out',
     else
       Router.go 'home'
 
+Router.route '/profile/:id',
+  name: 'profile'
+  action: ->
+    if Meteor.user()
+      @render 'profile'
+    else
+      @render 'about'
+
 Router.route '/users',
   name: 'users'
   waitOn: ->
@@ -43,7 +51,8 @@ Router.route '/history/:name',
 Router.route '/',
   name: 'home',
   waitOn: ->
-    Meteor.subscribe 'vehicles'
+    return unless Meteor.user()
+    Meteor.subscribe 'vehicles', Meteor.user().profile.organization
   action: ->
     if Meteor.user()
       @render 'home'

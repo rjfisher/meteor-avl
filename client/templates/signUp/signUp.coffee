@@ -16,7 +16,7 @@ Template.signUp.events
         organization: organization
       , (error) ->
         if error
-          toastr.error('Could not add user: ', + error.reason, 'Error!')
+          toastr.error 'Could not add user: ', + error.reason, 'Error!'
         else
-          toastr.success('Welcome to the AVL site', 'Added user')
+          toastr.success 'Welcome to the AVL site', 'Added user'
           Router.go 'home'

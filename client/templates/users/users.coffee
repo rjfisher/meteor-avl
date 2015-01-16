@@ -4,3 +4,8 @@ Template.users.helpers
 
   users: ->
     Meteor.users.find()
+
+Template.users.events
+  'click .addUser': (e) ->
+    $('#addUserModal').modal('show')
+    

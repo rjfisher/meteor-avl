@@ -1,9 +1,9 @@
 <template name="user">
-  <tr>
+  <tr class={{isUser}}>
     <td>{{name}}</td>
     <td>{{email}}</td>
     <td>{{role}}</td>
     <td><a href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
-    <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+    <td><a class="delUser" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
   </tr>
 </template>

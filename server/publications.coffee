@@ -1,5 +1,7 @@
-Meteor.publish 'vehicles', ->
-  Vehicles.find()
+Meteor.publish 'vehicles', (org) ->
+  check org, String
+  
+  Vehicles.find({'organization': org})
 
 Meteor.publish 'history', (name) ->
   check name, String
@@ -11,5 +13,6 @@ Meteor.publish 'users-list', (org) ->
 
   Meteor.users.find {'profile.organization': org},
     fields:
+      emails: 1
       username: 1
       profile: 1
