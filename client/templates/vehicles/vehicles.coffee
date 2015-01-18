@@ -6,5 +6,5 @@ Template.vehicles.helpers
     Vehicles.find()
 
 Template.vehicles.events
-  'click .addUser': (e) ->
+  'click .addVehicle': (e) ->
     $('#addVehicleModal').modal('show')

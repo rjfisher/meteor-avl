@@ -1,7 +1,3 @@
-Template.addVehicle.rendered = ->
-  $('#addVehicleModal').modal('show')
-  return
-
 Template.addVehicle.events
   'submit form': (e) ->
     e.preventDefault()
@@ -9,7 +5,7 @@ Template.addVehicle.events
     name = $(e.target).find('[name=name]').val()
 
     if not name?
-      toastr.error 'Vehicle requires name and organization'
+      toastr.error 'Vehicle requires name'
       return
 
     location = Geolocation.currentLocation()
@@ -18,8 +14,8 @@ Template.addVehicle.events
       name: name
       organization: Meteor.user().profile.organization
       loc:
-        lon: location.coords.longitude
-        lat: location.coords.latitude
+        lon: if location? then location.coords.longitude else 0
+        lat: if location? then location.coords.latitude else 0
 
     Meteor.call 'addVehicle', vehicle, (error, result) ->
       return toastr.error error.reason if error
