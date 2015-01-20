@@ -59,7 +59,7 @@ Meteor.methods
   editVehicle: (vehicleAttrs) ->
     check vehicleAttrs, Object
 
-    vehicle = Vehicles.findOne(id)
+    vehicle = Vehicles.findOne(vehicleAttrs.id)
 
     if not vehicle?
       throw new Meteor.Error('Vehicle could not be found in system.')
@@ -72,8 +72,9 @@ Meteor.methods
       # The user is not in the same organization, not allowed
       throw new Meteor.Error('You can only delete organization vehicles.')
 
-    ## TODO: Need to finish this server call
-
+    Vehicles.update vehicle._id,
+      $set:
+        name: vehicleAttrs.name
 
   updateVehicleLocation: (location) ->
     check Meteor.userId(), String

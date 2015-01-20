@@ -1,0 +1,23 @@
+<template name="editVehicle">
+  <div class="modal fade" id="editVehicleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit Vehicle</h4>
+        </div>
+        <div class="modal-body">
+          <h4>
+            <p><span class="glyphicon glyphicon-road"></span> Editing Vehicles:</p>
+          </h4>
+          <p>Attributes of vehicles can be changed once added to the system.  Use the form below
+           to make the modifications to the vehicle you desire.</p>
+          <form class="form">
+            <input type="single" class="form-control" name="name" placeholder="Vehicle Name" value={{name}} required="" autofocus="" />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Save Changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
