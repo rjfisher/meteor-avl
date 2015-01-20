@@ -43,6 +43,7 @@ Router.route '/vehicles',
   waitOn: ->
     return unless Meteor.user()
     Meteor.subscribe 'vehicles', Meteor.user().profile.organization
+    Meteor.subscribe 'users-list', Meteor.user().profile.organization
   action: ->
     if Meteor.user()
       @render 'vehicles'
