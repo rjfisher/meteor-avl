@@ -1,7 +1,7 @@
 @Histories = new Mongo.Collection('history',
   transform: (doc) ->
     doc.lastSeen = ->
-      seen = moment(@updated)
+      seen = moment @updated
       seen.fromNow()
 
     doc
@@ -13,7 +13,7 @@ Meteor.methods
     check vehicle, Object
 
     if not vehicle.user is Meteor.userId()
-      throw new Meteor.Error('Invalid User', 'You do not own this vehicle')
+      throw new Meteor.Error 401, 'Invalid User', 'You do not own this vehicle'
 
     seconds = (new Date().getTime() - vehicle.updated) / 1000
     return unless seconds > 5

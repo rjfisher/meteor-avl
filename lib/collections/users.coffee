@@ -4,10 +4,10 @@ Meteor.methods
 
     # Ideally we would want some billing info in here!
 
-    user = Meteor.users.findOne({'profile.organization': options.organization})
+    user = Meteor.users.findOne 'profile.organization': options.organization
 
     if user?
-      throw new Meteor.Error('Cannot join existing organization.')
+      throw new Meteor.Error 401, 'Cannot join existing organization.'
 
     id = Accounts.createUser
       email: options.email
@@ -25,11 +25,11 @@ Meteor.methods
 
     if not Meteor.user().profile.isAdmin
       # They aren't an admin, return error
-      throw new Meteor.Error('Only administrators may add new users.')
+      throw new Meteor.Error 401, 'Only administrators may add new users.'
 
     if not Meteor.user().profile.organization is options.profile.organization
       # The new user is not in the same organization, not allowed
-      throw new Meteor.Error('You can only add users of the same organization')
+      throw new Meteor.Error 401, 'You can only add users of the same organization'
 
     id = Accounts.createUser
       email: options.email
@@ -46,11 +46,11 @@ Meteor.methods
 
     if not Meteor.user().profile.isAdmin
       # They aren't an admin, return error
-      throw new Meteor.Error('Only administrators may edit users.')
+      throw new Meteor.Error 401, 'Only administrators may edit users.'
 
     if not Meteor.user().profile.organization is options.organization
       # The new user is not in the same organization, not allowed
-      throw new Meteor.Error('You can only edit users of the same organization')
+      throw new Meteor.Error 401, 'You can only edit users of the same org'
 
     Meteor.users.update
       _id: options.id
@@ -68,14 +68,14 @@ Meteor.methods
 
     if not user?
       # User wasn't found! WTF
-      throw new Meteor.Error('User does not exist.')
+      throw new Meteor.Error 404, 'User does not exist.'
 
     if not Meteor.user().profile.isAdmin
       # They aren't an admin, return error
-      throw new Meteor.Error('Only administrators may remove users.')
+      throw new Meteor.Error 401, 'Only administrators may remove users.'
 
     if not Meteor.user().profile.organization is user.profile.organization
       # The user is not in the same organization, not allowed
-      throw new Meteor.Error('You can only delete organization members')
+      throw new Meteor.Error 401, 'You can only delete organization members'
 
-    Meteor.users.remove(_id: id)
+    Meteor.users.remove _id: id

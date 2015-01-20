@@ -1,0 +1,24 @@
+<template name="assignVehicle">
+  <div class="modal fade" id="assignVehicleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Assign Vehicle</h4>
+        </div>
+        <div class="modal-body">
+          <h4>
+            <p><span class="glyphicon glyphicon-send"></span> Assigning Vehicles:</p>
+          </h4>
+          <p>Vehicles must be assigned to a user before being tracked with the system.
+          Please select a user to assign to this vehicle.  If the vehicle is for a user
+          not yet added to the system <a href="{{pathFor 'users'}}">add the user</a> before assigning the vehicle.</p>
+          <form class="form">
+            <input type="single" class="form-control" name="name" placeholder="User Name" autofocus="" />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Assign</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
