@@ -18,3 +18,13 @@ Template.vehicleItem.helpers
       'active'
     else
       ''
+
+  badgeColor: ->
+    m = if Session.get('currTime')? then Session.get('currTime') else moment()
+    return 'badge-success' if moment(m).diff(@updated, 'm') < 1
+    return 'badge-info' if moment(m).diff(@updated, 'm') < 10
+    return 'badge-warning' if moment(m).diff(@updated, 'm') < 30
+    return 'badge-danger' if moment(m).diff(@updated, 'm') >= 30
+
+  lastSeen: ->
+    moment(@updated).from(Session.get 'currTime')

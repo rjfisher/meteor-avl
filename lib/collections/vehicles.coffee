@@ -1,11 +1,4 @@
-@Vehicles = new Mongo.Collection('vehicles',
-  transform: (doc) ->
-    doc.lastSeen = ->
-      seen = moment @updated
-      seen.fromNow()
-
-    doc
-)
+@Vehicles = new Mongo.Collection 'vehicles'
 
 Meteor.methods
   addVehicle: (vehicleAttrs) ->

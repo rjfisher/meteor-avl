@@ -216,3 +216,23 @@ input[type="search"] {
   float: right;
   overflow: hidden; /* if you don't want #second to wrap below #first */
 }
+
+.badge-success {
+  color: #5CB85C;
+  background-color: white;
+}
+
+.badge-info {
+  color: #337AB7;
+  background-color: white;
+}
+
+.badge-warning {
+  color: #F0AD4E;
+  background-color: white;
+}
+
+.badge-danger {
+  color: #D9534F;
+  background-color: white;
+}

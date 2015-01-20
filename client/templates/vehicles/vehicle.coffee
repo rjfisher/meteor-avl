@@ -2,11 +2,16 @@ Template.vehicle.helpers
   owner: ->
     user = Meteor.users.findOne(@user)
     if user? then user.profile.displayName else 'Unassigned'
+
+  lastSeen: ->
+    moment(@updated).from(Session.get 'currTime')
+
   status: ->
-    return 'success' if moment().diff(@updated, 'm') < 1
-    return 'info' if moment().diff(@updated, 'm') < 10
-    return 'warning' if moment().diff(@updated, 'm') < 30
-    return 'danger' if moment().diff(@updated, 'm') >= 30
+    m = if Session.get('currTime')? then Session.get('currTime') else moment()
+    return 'success' if moment(m).diff(@updated, 'm') < 1
+    return 'info' if moment(m).diff(@updated, 'm') < 10
+    return 'warning' if moment(m).diff(@updated, 'm') < 30
+    return 'danger' if moment(m).diff(@updated, 'm') >= 30
 
 Template.vehicle.events
   'click .assignVehicle': (e) ->

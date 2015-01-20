@@ -1,11 +1,4 @@
-@Histories = new Mongo.Collection('history',
-  transform: (doc) ->
-    doc.lastSeen = ->
-      seen = moment @updated
-      seen.fromNow()
-
-    doc
-)
+@Histories = new Mongo.Collection 'history'
 
 Meteor.methods
   addVehicleHistory: (vehicle) ->
