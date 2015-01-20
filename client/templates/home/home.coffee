@@ -42,5 +42,6 @@ Template.home.rendered = ->
   return
 
 Template.home.destroyed = ->
+  Session.set 'selected', null
   Session.set 'map', false
   return

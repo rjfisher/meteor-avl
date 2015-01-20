@@ -2,7 +2,7 @@ Template.assignVehicle.events
   'submit form': (e) ->
     e.preventDefault()
 
-    name = $(e.target).find('[name=name]').val()
+    email = $(e.target).find('[name=name]').val()
 
     vehicle = Session.get 'assignVehicle'
 
@@ -10,14 +10,20 @@ Template.assignVehicle.events
       toastr.error 'Could not determine vehicle for assigning.', 'Error'
       return
 
-    user = Meteor.users.findOne('profile.displayName': name)
-
-    if not user?
+    if not email?
       Meteor.call 'unassignVehicle', vehicle._id, (error, result) ->
         return toastr.error error.reason if error
         Session.set 'assignVehicle', null
         $('#assignVehicleModal').modal('hide')
         toastr.success 'Vehicle successfully assigned to no one'
+      return
+
+    user = Meteor.users.findOne emails:
+      $elemMatch:
+        address: email
+
+    if not user?
+      toastr.error 'Could not find a user with that email', 'Error'
       return
 
     attrs =
