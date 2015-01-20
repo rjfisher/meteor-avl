@@ -37,7 +37,7 @@ Meteor.methods
     _id: id
 
   delVehicle: (id) ->
-    check id
+    check id, String
 
     vehicle = Vehicles.findOne(id)
 
@@ -52,7 +52,9 @@ Meteor.methods
       # The user is not in the same organization, not allowed
       throw new Meteor.Error('You can only delete organization vehicles.')
 
-    Vehicles.remove(id: id)
+    console.log 'vehicle id = ' + id
+
+    Vehicles.remove(_id: id)
 
   editVehicle: (vehicleAttrs) ->
     check vehicleAttrs, Object

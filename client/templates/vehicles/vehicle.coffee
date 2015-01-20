@@ -7,4 +7,9 @@ Template.vehicle.helpers
 
 Template.vehicle.events
   'click .editVehicle': (e) ->
-    # Show the dialog
+    Session.set 'editVehicle', @
+    $('#editVehicleModal').modal('show')
+
+  'click .delVehicle': (e) ->
+    Session.set 'delVehicle', @
+    $('#deleteVehicleModal').modal('show')
