@@ -1,0 +1,27 @@
+<template name="messages">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="heading-wrapper">
+        <div class="heading-left"><span class="glyphicon glyphicon-inbox"></span> Messages - {{username}}</div>
+        <a class="addMessage"><div class="heading-right"><span class="glyphicon glyphicon-plus"></span> Add Message</div></a>
+      </div>
+    </div>
+
+    <table class="table table-hover table-striped">
+      <tbody>
+        <tr>
+          <th>From</th>
+          <th>Subject</th>
+          <th>Date</th>
+          <th width="32px">Read</th>
+          <th width="32px">Reply</th>
+          <th width="32px">Delete</th>
+        </tr>
+
+        {{#each messages}}
+        {{> messageItem}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

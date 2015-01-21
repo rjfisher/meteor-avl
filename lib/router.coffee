@@ -27,6 +27,17 @@ Router.route '/profile/:id',
     else
       @render 'about'
 
+Router.route '/messages',
+  name: 'messages'
+  waitOn: ->
+    return unless Meteor.user()
+    Meteor.subscribe 'messages', Meteor.user().emails[0].address
+  action: ->
+    if Meteor.user()
+      @render 'messages'
+    else
+      @render 'about'
+
 Router.route '/users',
   name: 'users'
   waitOn: ->

@@ -1,7 +1,8 @@
 Template.vehicle.helpers
   owner: ->
     user = Meteor.users.findOne(@user)
-    if user? and user.emails[0]? then user.profile.displayName + ' (' + user.emails[0].address + ')' else 'Unassigned'
+    if user? and user.emails[0]? then user.profile.displayName +
+      ' (' + user.emails[0].address + ')' else 'Unassigned'
 
   lastSeen: ->
     moment(@updated).from(Session.get 'currTime')
