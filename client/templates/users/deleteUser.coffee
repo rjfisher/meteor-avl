@@ -1,7 +1,5 @@
 Template.deleteUser.events
-  'submit form': (e) ->
-    e.preventDefault()
-
+  'click .btn-delete': (e) ->
     user = Session.get 'delUser'
 
     if not user?

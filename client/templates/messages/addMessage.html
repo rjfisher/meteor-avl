@@ -1,0 +1,26 @@
+<template name="addMessage">
+  <div class="modal fade" id="addMessageModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add New Message</h4>
+        </div>
+        <div class="modal-body">
+          <h4>
+            <p><span class="glyphicon glyphicon-inbox"></span> Adding a Message:</p>
+          </h4>
+          <p>Users are able to send messages containing important information between each other.
+          Or Administrators can send messages to all their users.</p>
+            <form class="form">
+              <input type="single" class="form-control" name="emails" placeholder="Email Address(es)" required="" autofocus="" />
+              <input type="single" class="form-control" name="subject" placeholder="Message Subject" required="" />
+
+              <textarea class="form-control" rows="5" name="messageText" placeholder="Message" required=""></textarea>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>

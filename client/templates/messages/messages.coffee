@@ -4,3 +4,7 @@ Template.messages.helpers
 
   messages: ->
     Messages.find()
+
+Template.messages.events
+  'click .addMessage': (e) ->
+    $('#addMessageModal').modal('show')

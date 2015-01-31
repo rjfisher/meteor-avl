@@ -1,6 +1,7 @@
 @gmaps =
   map: null
   currLocation: null
+  drawingManager: null
   locationsHandler: false
 
   centerOnLocation: (location) ->
@@ -8,7 +9,7 @@
     @map.setCenter loc
     return
 
-  initialize: ->
+  initialize: (draw) ->
     mapOptions =
       zoom: 18
       minZoom: 12
@@ -33,6 +34,31 @@
       place = places[0]
       map.setCenter place.geometry.location
       return
+
+    if draw
+      @drawingManager = new google.maps.drawing.DrawingManager(
+        drawingMode: google.maps.drawing.OverlayType.POLYGON
+        drawingControl: true
+        drawingControlOptions:
+          position: google.maps.ControlPosition.BOTTOM_CENTER
+          drawingModes: [
+            google.maps.drawing.OverlayType.POLYGON
+          ]
+      )
+
+      @drawingManager.setMap map
+
+      google.maps.event.addListener @drawingManager, 'overlaycomplete', (e) ->
+        path = e.overlay.getPath().getArray()
+        return unless path
+
+        #TODO: Prompt for confirmation of add
+
+        e.overlay.setMap(null)
+
+        Meteor.call 'addFence', path, (error, result) ->
+          return toastr.error error.reason if error
+          return toastr.success 'Fence added to data'
 
     Deps.autorun ->
       return if Session.get('located')

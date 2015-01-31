@@ -25,3 +25,9 @@ Meteor.publish 'messages', (id) ->
 
   Messages.find
     to: id
+
+Meteor.publish 'fences', (org) ->
+  check org, String
+
+  Fences.find
+    'organization': org

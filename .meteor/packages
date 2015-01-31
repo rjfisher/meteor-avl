@@ -16,3 +16,4 @@ mrt:live-maps
 momentjs:moment
 rcy:nouislider
 multiply:iron-router-progress
+differential:workers

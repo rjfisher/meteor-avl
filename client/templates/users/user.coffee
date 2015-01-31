@@ -20,6 +20,7 @@ Template.user.events
     if @_id is Meteor.userId()
       Session.set 'delUser', @_id
       $('#deleteUserModal').modal('show')
+      return
 
     # We want to forbid deleting other admins
     if @profile.isAdmin

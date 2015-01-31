@@ -1,7 +1,5 @@
 Template.deleteVehicle.events
-  'submit form': (e) ->
-    e.preventDefault()
-
+  'click .btn-del': (e) ->
     vehicle = Session.get 'delVehicle'
 
     if not vehicle?

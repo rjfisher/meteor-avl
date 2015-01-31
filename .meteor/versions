@@ -13,6 +13,8 @@ chrismbeckett:toastr@2.1.0
 coffeescript@1.0.5
 ddp@1.0.14
 deps@1.0.6
+differential:cluster@1.0.0
+differential:workers@2.0.0
 ejson@1.0.5
 email@1.0.5
 fastclick@1.0.2
@@ -50,6 +52,7 @@ multiply:iron-router-progress@1.0.1
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2
+percolatestudio:synced-cron@1.0.0
 random@1.0.2
 rcy:nouislider@7.0.7_2
 reactive-dict@1.0.5
@@ -72,3 +75,4 @@ underscore@1.0.2
 url@1.0.3
 webapp@1.1.6
 webapp-hashing@1.0.2
+wizonesolutions:underscore-string@1.0.0

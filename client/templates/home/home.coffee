@@ -1,7 +1,7 @@
 liveMarkers = null
 
 Template.home.rendered = ->
-  gmaps.initialize() unless Session.get('map')
+  gmaps.initialize(false) unless Session.get('map')
 
   Deps.autorun ->
     loc = Geolocation.latLng()

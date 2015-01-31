@@ -29,7 +29,8 @@ Meteor.methods
 
     if not Meteor.user().profile.organization is options.profile.organization
       # The new user is not in the same organization, not allowed
-      throw new Meteor.Error 401, 'You can only add users of the same organization'
+      throw new Meteor.Error 401,
+        'You can only add users of the same organization'
 
     id = Accounts.createUser
       email: options.email
@@ -77,5 +78,11 @@ Meteor.methods
     if not Meteor.user().profile.organization is user.profile.organization
       # The user is not in the same organization, not allowed
       throw new Meteor.Error 401, 'You can only delete organization members'
+
+    # We want to remove all messages for that user as well
+    Messages.remove
+      to: user.emails[0].address
+
+    # TODO: Unassign any vehicles user is assigned to
 
     Meteor.users.remove _id: id

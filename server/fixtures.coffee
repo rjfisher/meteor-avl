@@ -38,3 +38,4 @@ if Vehicles.find().count() is 0
   console.log 'Indexing collections'
   Vehicles._ensureIndex loc: '2d'
   Histories._ensureIndex loc: '2d'
+  Fences._ensureIndex loc: '2dsphere'
